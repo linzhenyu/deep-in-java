@@ -1,7 +1,5 @@
+~~~
 **1. 实现一个自定义的classloader，加载如下的文件，内容需要解码，读取的字节码需要解码，解码方式：255减去原有值，并执行成功**
-
-
-`
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
@@ -42,8 +40,7 @@ public class TestMyClassLoader {
         Method method = clazz.getMethod("hello");
         method.invoke(object);
     }
-}   
-`
+}
 
 
 **运行结果**
@@ -110,3 +107,5 @@ GC算法使用CMS							CMS中的下列阶段并发执行			关闭PerfData写入
 -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/devjava/logs/ -Xloggc:/home/devjava/logs/lifecircle-tradecore-gc.log -XX:+PrintGCApplicationStoppedTime 
 GC时打印时间戳信息					GC时打印更多详细信息
 -XX:+PrintGCDateStamps -XX:+PrintGCDetails -javaagent:/home/devjava/ArmsAgent/arms-bootstrap-1.7.0-SNAPSHOT.jar -jar /home/devjava/lifecircle-tradecore/app/lifecircle-tradecore.jar
+
+~~~
