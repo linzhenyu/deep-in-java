@@ -1,4 +1,6 @@
 **1. 实现一个自定义的classloader，加载如下的文件，内容需要解码，读取的字节码需要解码，解码方式：255减去原有值，并执行成功**
+
+
 `import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -48,9 +50,13 @@ public class TestMyClassLoader {
 
     }
 }   `
+
+
 **运行结果**
 `Hello, classLoader!`
+
 **2. 分析以下GC日志，尽可能详细的标注出GC发生时相关的信息。**
+
 发生CMS GC
 阶段1:初始标记  本次GC发生的时间与JVM启动时间的差 114.015					当前老年代使用情况（老年代可用容量） 当前整个堆的使用情况（整个堆的容量） 0.28秒
 2020-10-29T21:19:19.488+0800: 114.015: [GC (CMS Initial Mark) [1 CMS-initial-mark: 106000K(2097152K)] 1084619K(3984640K), 0.2824583 secs] [Times: user=0.86 sys=0.00, real=0.28 secs]
@@ -96,7 +102,10 @@ public class TestMyClassLoader {
 2020-10-29T21:19:25.540+0800: 120.068: [CMS-concurrent-reset-start]
 阶段6:并发重置时间 0.003秒
 2020-10-29T21:19:25.544+0800: 120.071: [CMS-concurrent-reset: 0.003/0.003 secs] [Times: user=0.00 sys=0.00, real=0.01 secs]
+
+
 **3. 标注以下启动参数每个参数的含义**
+
 		环境参数PRO	堆区初始值4G 堆区最大值4G 新生代最大值2G  堆外内存512M	元空间大小128M 		元空间最大值512M					禁用偏向锁				禁用热度衰减
 java -Denv=PRO -server -Xms4g -Xmx4g -Xmn2g -XX:MaxDirectMemorySize=512m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m -XX:-UseBiasedLocking -XX:-UseCounterDecay 
 自动装箱缓存最大值为10240	开启老年代使用CMS收集器	触发执行CMS回收的当前年代区内存占用的百分比设置为百分之75 开启只根据占用情况作为开始执行CMS收集的标准 年轻代最大年龄为6
