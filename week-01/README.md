@@ -1,19 +1,16 @@
 **1. 实现一个自定义的classloader，加载如下的文件，内容需要解码，读取的字节码需要解码，解码方式：255减去原有值，并执行成功**
 
 
-`import java.io.ByteArrayOutputStream;
+`
+
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.Method;
-/**
- *
- * @author linzy
- * @version TestMyClassLoader.java, v 0.1 2020-11-06 08:35
- */
+
+
 public class TestMyClassLoader {
-
     static class CustomClassLoader extends ClassLoader {
-
         private byte[] decrypt(String className) throws IOException {
             try (FileInputStream file = new FileInputStream("/Users/zoe/IdeaProjects/linzy/src/Hello.xlass"); ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(1024)) {
                 int b;
@@ -24,9 +21,7 @@ public class TestMyClassLoader {
             } catch (IOException e) {
                 throw new IOException();
             }
-
         }
-
         /**
          * 重写findClass方法
          */
@@ -40,16 +35,15 @@ public class TestMyClassLoader {
             }
         }
     }
-
     public static void main(String[] args) throws Exception {
         CustomClassLoader classLoader = new CustomClassLoader();
         Class<?> clazz = classLoader.loadClass("Hello");
         Object object  = clazz.newInstance();
         Method method = clazz.getMethod("hello");
         method.invoke(object);
-
     }
-}   `
+}   
+`
 
 
 **运行结果**
